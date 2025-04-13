@@ -79,13 +79,110 @@ Language: Java (17+)
   + View orders related to their products
 
 # 📦 Database Schema:
-+ User (id, username, email, password, role)
++ The application will use a PostgreSQL database containerized via Docker, following this extended schema:
 
-+ Product (id, name, description, price, vendor_id)
+# 👤 USERS
++ id (PK)
 
-+ Order (id, customer_id, created_at)
++ email (UK)
 
-+ OrderItem (id, order_id, product_id, quantity)
++ password
+
++ first_name, last_name, phone_number
+
++ created_at, updated_at
+
++ active (boolean)
+
++ role (enum: CUSTOMER | VENDOR)
+
+# 📍 ADDRESSES
++ id (PK)
+
++ user_id (FK → USERS)
+
++ street, city, state, country, postal_code
+
++ is_default (boolean)
+
+# 🛍️ PRODUCTS
++ id (PK)
+
++ vendor_id (FK → USERS)
+
++ category_id (FK → CATEGORIES)
+
++ name, description, price, stock_quantity, sku
+
++ created_at, updated_at
+
++ active (boolean)
+
+# 🗂️ CATEGORIES
++ id (PK)
+
++ name, description
+
++ parent_id (FK → CATEGORIES for hierarchy)
+
+# 🖼️ PRODUCT_IMAGES
++ id (PK)
+
++ product_id (FK → PRODUCTS)
+
++ image_url
+
++ display_order (int)
+
++ is_primary (boolean)
+
+# 🛒 CART_ITEMS
++ id (PK)
+
++ user_id (FK → USERS)
+
++ product_id (FK → PRODUCTS)
+
++ quantity
+
++ added_at (timestamp)
+
+# 📦 ORDERS
++ id (PK)
+
++ user_id (FK → USERS)
+
++ shipping_address_id (FK → ADDRESSES)
+
++ billing_address_id (FK → ADDRESSES)
+
++ total_amount (decimal)
+
++ order_date (timestamp)
+
++ payment_method (string)
+
++ payment_status (string)
+
+# 🧾 ORDER_ITEMS
++ id (PK)
+
++ order_id (FK → ORDERS)
+
++ product_id (FK → PRODUCTS)
+
++ quantity, price_per_unit, subtotal
+
+# 🚚 ORDER_STATUS
++ id (PK)
+
++ order_id (FK → ORDERS)
+
++ status (enum: PENDING, PROCESSING, SHIPPED, DELIVERED, CANCELED)
+
++ status_date (timestamp)
+
++ notes (string)
 
 # 🧱 Architecture:
 + **Clean, layered architecture:**
