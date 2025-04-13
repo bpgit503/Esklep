@@ -81,7 +81,7 @@ Language: Java (17+)
 # 📦 Database Schema:
 + The application will use a PostgreSQL database containerized via Docker, following this extended schema:
 
-# 👤 USERS
+### 👤 USERS
 + id (PK)
 
 + email (UK)
@@ -96,7 +96,7 @@ Language: Java (17+)
 
 + role (enum: CUSTOMER | VENDOR)
 
-# 📍 ADDRESSES
+### 📍 ADDRESSES
 + id (PK)
 
 + user_id (FK → USERS)
@@ -105,7 +105,7 @@ Language: Java (17+)
 
 + is_default (boolean)
 
-# 🛍️ PRODUCTS
+### 🛍️ PRODUCTS
 + id (PK)
 
 + vendor_id (FK → USERS)
@@ -118,14 +118,14 @@ Language: Java (17+)
 
 + active (boolean)
 
-# 🗂️ CATEGORIES
+### 🗂️ CATEGORIES
 + id (PK)
 
 + name, description
 
 + parent_id (FK → CATEGORIES for hierarchy)
 
-# 🖼️ PRODUCT_IMAGES
+### 🖼️ PRODUCT_IMAGES
 + id (PK)
 
 + product_id (FK → PRODUCTS)
@@ -136,7 +136,7 @@ Language: Java (17+)
 
 + is_primary (boolean)
 
-# 🛒 CART_ITEMS
+### 🛒 CART_ITEMS
 + id (PK)
 
 + user_id (FK → USERS)
@@ -147,7 +147,7 @@ Language: Java (17+)
 
 + added_at (timestamp)
 
-# 📦 ORDERS
+### 📦 ORDERS
 + id (PK)
 
 + user_id (FK → USERS)
@@ -164,7 +164,7 @@ Language: Java (17+)
 
 + payment_status (string)
 
-# 🧾 ORDER_ITEMS
+### 🧾 ORDER_ITEMS
 + id (PK)
 
 + order_id (FK → ORDERS)
@@ -173,7 +173,7 @@ Language: Java (17+)
 
 + quantity, price_per_unit, subtotal
 
-# 🚚 ORDER_STATUS
+### 🚚 ORDER_STATUS
 + id (PK)
 
 + order_id (FK → ORDERS)
@@ -184,7 +184,7 @@ Language: Java (17+)
 
 + notes (string)
 
-# 🧱 Architecture:
+### 🧱 Architecture:
 + **Clean, layered architecture:**
 
   + **Controller → Service → Repository**
@@ -195,7 +195,7 @@ Language: Java (17+)
 
 + Project will be structured in a way that frontend and services can be integrated later
 
-# 🐳 Docker Integration:
+### 🐳 Docker Integration:
 
 + Dockerize the app and connect to a PostgreSQL container
 
