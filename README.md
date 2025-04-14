@@ -101,7 +101,7 @@ Language: Java (17+)
 
 + user_id (FK → USERS)
 
-+ street, city, state, country, postal_code
++ street, city, country, postal_code
 
 + is_default (boolean)
 
