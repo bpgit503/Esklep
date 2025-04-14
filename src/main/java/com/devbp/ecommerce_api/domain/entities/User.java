@@ -7,6 +7,7 @@ import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -45,8 +46,8 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
-//    @OneToMany()
-//    private List<Address> address;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> address = new ArrayList<>();
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
