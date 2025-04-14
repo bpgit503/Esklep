@@ -14,11 +14,10 @@ import java.util.UUID;
 public class AddressDto {
 
     private UUID id;
-    private  String street;
-    private  String city;
-    private  String country;
-    private  String postalCode;
-//    private UserDto user;
+    private String street;
+    private String city;
+    private String country;
+    private String postalCode;
     private boolean isDefault;
 
 }
