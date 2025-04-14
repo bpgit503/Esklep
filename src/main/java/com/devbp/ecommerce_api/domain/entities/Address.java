@@ -30,13 +30,15 @@ public class Address {
     @Column(nullable = false)
     private String city;
 
+    private String state;
+
     @Column(nullable = false)
     private String country;
 
     @Column(nullable = false)
     private String postalCode;
 
-    @Column(nullable = false)
+    @Column(name = "is_default",nullable = false)
     private boolean isDefault;
 
     @Override

@@ -32,13 +32,13 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(name = "first_name",nullable = false)
     private String firstName;
 
-    @Column(nullable = false)
+    @Column(name = "last_name",nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
+    @Column(name = "phone_number",nullable = false)
     private String phoneNumber;
 
     private boolean isActive;
@@ -49,10 +49,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> address = new ArrayList<>();
 
-    @Column(nullable = false)
+    @Column(name = "created_at",nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
+    @Column(name = "updated_at",nullable = false)
     private LocalDateTime updatedAt;
 
     @Override
