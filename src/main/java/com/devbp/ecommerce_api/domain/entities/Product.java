@@ -1,9 +1,6 @@
 package com.devbp.ecommerce_api.domain.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -26,7 +23,7 @@ public class Product {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)
@@ -37,6 +34,12 @@ public class Product {
 
     @Column(name = "sku", unique = true, nullable = false, length = 50)
     private String sku;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    private Category category;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;

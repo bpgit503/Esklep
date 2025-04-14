@@ -1,6 +1,6 @@
 package com.devbp.ecommerce_api.domain;
 
-public enum Role {
+public enum UserRole {
     CUSTOMER,
     VENDOR
 }

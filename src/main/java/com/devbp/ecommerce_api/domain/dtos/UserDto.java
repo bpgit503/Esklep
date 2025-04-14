@@ -1,6 +1,6 @@
 package com.devbp.ecommerce_api.domain.dtos;
 
-import com.devbp.ecommerce_api.domain.Role;
+import com.devbp.ecommerce_api.domain.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +21,7 @@ public class UserDto {
     private String lastName;
     private String phoneNumber;
     private boolean isActive;
-    private Role role;
+    private UserRole userRole;
     private String createdAt;
     private String updatedAt;
     private List<AddressDto> addresses;
