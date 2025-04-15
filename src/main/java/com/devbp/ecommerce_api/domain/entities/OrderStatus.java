@@ -1,5 +1,6 @@
 package com.devbp.ecommerce_api.domain.entities;
 
+import com.devbp.ecommerce_api.domain.StatusType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
