@@ -58,8 +58,8 @@ public class Order {
         orderItems.add(orderItem);
         orderItem.setOrder(this);
     }
-//todo: create helper methods to add status to order history
 
+//todo: create helper methods to add status to order history
     public void addOrderStatus(OrderStatus orderStatus) {
         statusHistory.add(orderStatus);
         orderStatus.setOrder(this);
