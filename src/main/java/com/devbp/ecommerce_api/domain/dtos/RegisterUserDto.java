@@ -1,10 +1,9 @@
 package com.devbp.ecommerce_api.domain.dtos;
 
 import com.devbp.ecommerce_api.domain.UserRole;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,7 +32,8 @@ public class RegisterUserDto {
     @Pattern(regexp = "^\\+?[0-9. ()-]{7,25}$", message = "Phone number is invalid")
     private String phoneNumber;
 
-    @NotBlank(message = "Role is required")
+    @NotNull(message = "Role is required")
+    @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
 }
