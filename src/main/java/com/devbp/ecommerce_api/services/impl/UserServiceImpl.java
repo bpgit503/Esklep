@@ -9,6 +9,7 @@ import com.devbp.ecommerce_api.services.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto registerUser(RegisterUserDto registerUserDto) {
-        if (userRepository.existsByEmail(registerUserDto.getEmail())){
+        if (userRepository.existsByEmail(registerUserDto.getEmail())) {
             throw new IllegalArgumentException("Email already in user");
         }
 
@@ -69,5 +70,14 @@ public class UserServiceImpl implements UserService {
         User updatedUser = userRepository.save(user);
         return userMapper.toDto(updatedUser);
 
+    }
+
+    @Override
+    @Transactional
+    public void deleteUser(UUID id) {
+        if (!userRepository.existsById(id)) {
+            throw new EntityNotFoundException("User with id " + id + " not found");
+        }
+        userRepository.deleteById(id);
     }
 }
